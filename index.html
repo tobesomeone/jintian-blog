@@ -145,9 +145,10 @@
 <img src="http://webbucket-test.oss-cn-hangzhou.aliyuncs.com/mode1.png?Expires=1538817677&OSSAccessKeyId=TMP.AQEx0xXLRbx9SGshZLmyl8Ri8qhaFs5GB67B64XAf_SwAHDcfxeajmKeRgOXADAtAhUA8unHDvrokQSw4qc_agaS00KPDFICFHw17M13_sad0tYMtZNX8PT3sEW6&Signature=Vf1z0SgYFI%2F8pvVhPtuBUYzuWr0%3D">
 </li>
 </ol>
-<ol start="5">
-<li>why webpack?<br>除了webpack，还有很多其他的打包工具，比如grunt，gulp,browserify等，</li>
+<ol start="6">
+<li>why webpack?<br>说了这么多配置，那么，webpack到底好在哪儿呢？ 除了webpack，还有很多其他的打包工具，比如grunt，gulp等，为什么webpack更受欢迎呢？<br>我们知道js的引用有两种：一种就是在html文档中以script标签一个个地引用js脚本；一种就是将所有js脚本合并为一个js文件，在html文档中以script标签引用。前者的问题是导致网络请求太多，后者问题是一个js文件太大，代码不好维护。</li>
 </ol>
+<p>前期，我们通过IIFE’s(立即执行函数表达式)这种模块化的场景来解决上述的问题，因此grunt, gulp等工具诞生了，但它们只是简单地将所有模块串起来。当你改动了一部分的js代码，或者应用只需要部分文件时，这些工具依然需要重新对所有文件进行打包，也就是说效率非常地下。<br>而ECMAScrip6中倡导的模块化开发中，webpack非常好地避开了这些问题，提高了打包的效率。</p>
 
         
       </div>
