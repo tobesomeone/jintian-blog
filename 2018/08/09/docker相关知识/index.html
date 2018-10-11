@@ -12,17 +12,20 @@
   
 </title>
 
-<meta name="description" content="#简介  什么是docker？NodeJs解释：将应用程序及其依赖以一种标准的单位进行打包。换言之，docker是一个快速部署的轻量级虚拟技术项目，开发人员可以一起打包程序和运行环境，成为一个镜像，只需要下载镜像文件就可以将程序跑起来，免去每次都安装各种依赖和环境的麻烦，还能够做到应用程序之间的隔离。粗糙地认为类似于虚拟机，但不同于虚拟机，  涉及的概念：镜像，容器，registry，  必备知识">
+<meta name="description" content="什么是docker？NodeJs解释：将应用程序及其依赖以一种标准的单位进行打包。换言之，docker是一个快速部署的轻量级虚拟技术项目，开发人员可以一起打包程序和运行环境，成为一个镜像，只需要下载镜像文件就可以将程序跑起来，免去每次都安装各种依赖和环境的麻烦，还能够做到应用程序之间的隔离。粗糙地认为docker类似于虚拟机，但不同于虚拟机。两者的共同点：隔离和配置计算机资源；不同点，docke">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker相关知识">
 <meta property="og:url" content="https://tobesomeone.github.io/jintian-blog/2018/08/09/docker相关知识/index.html">
 <meta property="og:site_name" content="jintian">
-<meta property="og:description" content="#简介  什么是docker？NodeJs解释：将应用程序及其依赖以一种标准的单位进行打包。换言之，docker是一个快速部署的轻量级虚拟技术项目，开发人员可以一起打包程序和运行环境，成为一个镜像，只需要下载镜像文件就可以将程序跑起来，免去每次都安装各种依赖和环境的麻烦，还能够做到应用程序之间的隔离。粗糙地认为类似于虚拟机，但不同于虚拟机，  涉及的概念：镜像，容器，registry，  必备知识">
+<meta property="og:description" content="什么是docker？NodeJs解释：将应用程序及其依赖以一种标准的单位进行打包。换言之，docker是一个快速部署的轻量级虚拟技术项目，开发人员可以一起打包程序和运行环境，成为一个镜像，只需要下载镜像文件就可以将程序跑起来，免去每次都安装各种依赖和环境的麻烦，还能够做到应用程序之间的隔离。粗糙地认为docker类似于虚拟机，但不同于虚拟机。两者的共同点：隔离和配置计算机资源；不同点，docke">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-30T07:02:22.962Z">
+<meta property="og:image" content="https://webbucket-test.oss-cn-hangzhou.aliyuncs.com/docker/docker.png">
+<meta property="og:image" content="https://webbucket-test.oss-cn-hangzhou.aliyuncs.com/docker/%E8%99%9A%E6%8B%9F%E6%9C%BA.png">
+<meta property="og:updated_time" content="2018-10-11T04:56:39.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker相关知识">
-<meta name="twitter:description" content="#简介  什么是docker？NodeJs解释：将应用程序及其依赖以一种标准的单位进行打包。换言之，docker是一个快速部署的轻量级虚拟技术项目，开发人员可以一起打包程序和运行环境，成为一个镜像，只需要下载镜像文件就可以将程序跑起来，免去每次都安装各种依赖和环境的麻烦，还能够做到应用程序之间的隔离。粗糙地认为类似于虚拟机，但不同于虚拟机，  涉及的概念：镜像，容器，registry，  必备知识">
+<meta name="twitter:description" content="什么是docker？NodeJs解释：将应用程序及其依赖以一种标准的单位进行打包。换言之，docker是一个快速部署的轻量级虚拟技术项目，开发人员可以一起打包程序和运行环境，成为一个镜像，只需要下载镜像文件就可以将程序跑起来，免去每次都安装各种依赖和环境的麻烦，还能够做到应用程序之间的隔离。粗糙地认为docker类似于虚拟机，但不同于虚拟机。两者的共同点：隔离和配置计算机资源；不同点，docke">
+<meta name="twitter:image" content="https://webbucket-test.oss-cn-hangzhou.aliyuncs.com/docker/docker.png">
 
 
   <link rel="alternative" href="/atom.xml" title="jintian" type="application/atom+xml">
@@ -120,13 +123,16 @@
 
   </div>
   <div class="article-entry">
-    <p>#简介</p>
-<ol>
-<li><p>什么是docker？<br>NodeJs解释：将应用程序及其依赖以一种标准的单位进行打包。换言之，docker是一个快速部署的轻量级虚拟技术项目，开发人员可以一起打包程序和运行环境，成为一个镜像，只需要下载镜像文件就可以将程序跑起来，免去每次都安装各种依赖和环境的麻烦，还能够做到应用程序之间的隔离。粗糙地认为类似于虚拟机，但不同于虚拟机，</p>
+    <ol>
+<li><p>什么是docker？<br>NodeJs解释：将应用程序及其依赖以一种标准的单位进行打包。换言之，docker是一个快速部署的轻量级虚拟技术项目，开发人员可以一起打包程序和运行环境，成为一个镜像，只需要下载镜像文件就可以将程序跑起来，免去每次都安装各种依赖和环境的麻烦，还能够做到应用程序之间的隔离。粗糙地认为docker类似于虚拟机，但不同于虚拟机。两者的共同点：隔离和配置计算机资源；不同点，docker是在操作系统层面的虚拟化，而虚拟机是在硬件层面的虚拟化,下列图片很好地展示了两者区别</p>
+<img src="https://webbucket-test.oss-cn-hangzhou.aliyuncs.com/docker/docker.png">
+<img src="https://webbucket-test.oss-cn-hangzhou.aliyuncs.com/docker/%E8%99%9A%E6%8B%9F%E6%9C%BA.png">
+<p>docker特点：1. 安全 2. 轻量 3. 标准化</p>
 </li>
-<li><p>涉及的概念：镜像，容器，registry，</p>
+<li><p>涉及的概念：镜像，容器，registry</p>
 </li>
-<li>必备知识：linux命令行，bash</li>
+<li><p>必备知识：linux命令行，bash</p>
+</li>
 <li><p>安装和配置： 去官网（<a href="http://www.docker.com/）下载对应的docker软件（本人使用windows版本）。" target="_blank" rel="noopener">http://www.docker.com/）下载对应的docker软件（本人使用windows版本）。</a> 右键docker选择settings–》Docker Deamon–》            registry-mirrors   添加加速器连接 <a href="http://466ed505.m.daocloud.io/" target="_blank" rel="noopener">http://466ed505.m.daocloud.io/</a>  （来自于阿里云或者网易云的docker加速器，提高docker下载速度）</p>
 </li>
 <li><p>本地运行: 打开命令行窗口，进行docker相关操作（最好跟着下面的指令在自己的电脑上敲一遍，看一下效果）<br> 5.1 基本操作：查看，启动和停止容器，下载镜像文件<br> 5.1.1 docker images   //查看镜像列表<br> 5.1.2  docker ps   //查看当前运行中的容器信息<br> 5.1.3  docker ps -a   //查看所有容器信息，包括运行中和暂停的容器信息<br> 5.1.4  docker pull nginx   //下载nginx镜像文件<br> 5.1.5  docker run -itd -p 10090:80 –name “my-nginx” nginx   </p>
@@ -137,8 +143,10 @@
 <p> 5.4    删除容器操作<br> 5.4.1  dokcer stop containerId   //停止指定容器<br> 5.4.2  docker ps -a  //查看运行中的容器<br> 5.4.3  docker rm containerId  //删除容器<br> 5.4.4  删除镜像：docker rmi imageId  前提必须先停止该镜像所在容器，然后删除容器，再删除镜像，若镜像被多个容器引用，需要强制删除,指令后面再 –force</p>
 <p> 5.5    利用docker部署NodeJs应用，非常轻量和方便（还有问题，待补充）<br> 5.5.1  docker search node<br> 5.5.2  docker pull node    //下载node镜像文件<br> 5.5.3  用nodejs编写一个简单的hello world后端文件app.js，docker images查看到node是否下载成功<br> 5.5.4  docker run -itd -p 10092:82 –name “my-node” node   //为node镜像文件创建新的容器  //打开浏览器localhost:10092可以查看hello world效果<br> 5.5.5 docker cp app.js containerId:/home/hello     //将该文件拷贝到制定的容器内，并指定路径</p>
 </li>
+<li><p>docker的应用场景</p>
+</li>
 </ol>
-<p>总结：使用docker的好处之一，就是方便学习新东西，用docker pull下载镜像文件，并在独立的容器内进行操作，用完后删掉容器和相应的文件，不影响本地</p>
+<p>总结：使用docker的好处之一，就是方便学习新东西，用docker pull下载镜像文件，并在独立的容器内进行操作，用完后删掉容器和相应的文件，不影响本地。</p>
 
   </div>
   <footer class="article-footer">
