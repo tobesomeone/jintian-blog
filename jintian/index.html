@@ -8,7 +8,7 @@
 
 <title>
   
-    Archive
+    归档
   
 </title>
 
@@ -134,16 +134,16 @@
       <div class="article-entry">
         
           <ol>
-<li>什么是webpack?<br>官网的解释：webpack是现代javascript应用中的一种静态模块打包机。它对项目中涉及的各个模块进行映射，构建出一个依赖图表并打包成一个或多个文件。<br>由此，我们可以获知：第一，webpack主要是javascript文件的打包机；第二：webpack适用于模块化的js文件，构建依赖图表；第三：webpack最后打包成一个或多个文件<br>关于第一点，webpack可以借助各种loader进行转化，比如css-loader,babel-loader可以将css文件，es6文件进行转化。</li>
+<li>什么是webpack?<br>官网的解释：webpack是现代javascript应用中的一种静态模块打包机。它对项目中涉及的各个模块进行映射，构建出一个依赖图表并打包成一个或多个文件。<br>由此，我们可以获知：第一，webpack主要是javascript文件的打包机；第二：webpack适用于模块化的js文件，构建依赖图表；第三：webpack最后打包成一个或多个文件。<br>关于第一点，webpack可以借助各种loader进行转化，比如css-loader,babel-loader可以将css文件，es6文件进行转化。</li>
 </ol>
 <ol start="2">
-<li><p>webpack配置文件<br>配置webpack，主要关注以下几点内容：entry,output,loader,plugin,resolve,mode等，分别为入口文件，输出文件，文件转化，文件优化，模块的绝对路径解析，开发模式（development/production）。目前webpack4.0.0最新版本中，webpack可以省略entry,output配置文件，当然，手动配置webpack更好。由于这块内容非常简单，这里就省略entry,output的讲解。</p>
+<li><p>webpack配置文件<br>webpack配置有很多的选项，本博客主要关注常用的内容，比如：entry,output,loader,plugin,resolve,mode,devserver，devtool等，分别为入口，输出，加载器，插件，模块解析，开发模式，开发工具（development/production）。目前webpack4.0.0最新版本中，webpack可以省略entry,output配置文件，当然，手动配置webpack更好。由于这块内容非常简单，这里就省略entry,output的讲解。</p>
 </li>
 <li><p>加载器loader<br>首先，我们思考一下为什么需要loader? 我们回到webpack的最初定义，它是用来打包js文件，因此我们需要使用loader对项目中涉及的许多静态资源(非js资源)，比如图片，字体，css等文件格式进行预处理，然后使之打包成为依赖图的一部分。<br>常用的loader：<br>styling(样式文件预处理）：css-loader,style-loader,less-loader,sacc-loader,postcss-loader<br>file（文本文件预处理）：file-loader,url-loader<br>ts/js转换：ts-loader/awesome-typescript-loader,babel-loader<br>html预处理：html-loader<br>loaders的具体配置如下</p>
 <img src="http://webbucket-test.oss-cn-hangzhou.aliyuncs.com/loaders.png?Expires=1538818205&OSSAccessKeyId=TMP.AQEx0xXLRbx9SGshZLmyl8Ri8qhaFs5GB67B64XAf_SwAHDcfxeajmKeRgOXADAtAhUA8unHDvrokQSw4qc_agaS00KPDFICFHw17M13_sad0tYMtZNX8PT3sEW6&Signature=pQSb2Du91dmEQuHF0lgBFsSnglw%3D">
 <p>更多loader详情可以参考<a href="https://webpack.js.org/loaders/" target="_blank" rel="noopener"></a></p>
 </li>
-<li><p>插件plugins<br>提供文件打包优化功能，资产管理，环境变量的注入，与loader的转换功能不同，plugins的重点在于优化。 如html-webpack-plugin，text-extract-webpack-plugin等。webpack提供了非常丰富的plugin接口，根据项目的需要进行相应的配置，使得webpack的功能非常的强大。<br>常用的plugins：<br>CommonsChunkPlugin 提取公共的模块部分<br>CopyWebpackPlugin  拷贝文件或文件夹到最终的打包文件夹<br>DllPlugin 开发环境才有，将开发的js文件和依赖的js库分开打包，因为每次开发的js文件有修改，而依赖的js库基本不会去改动，每次编译都更新非常耗时，所以分开打包<br>ExtractTextWebpackPlugin 将css文件从打包文件中独立出来<br>HotModuleReplacementPlugin  模块热替换<br>HtmlWebpackPlugin 将打包后的文件通过script标签添加到html文件中<br>SourceMapDevToolPlugin  在控制台source栏源代码可视化，适用于开发环境<br>plugins的具体配置如下</p>
+<li><p>插件plugins<br>提供文件打包优化功能，资产管理，环境变量的注入，与loader的转换功能不同，plugins的重点在于优化。 如html-webpack-plugin，text-extract-webpack-plugin等。webpack提供了非常丰富的plugin接口，根据项目的需要进行相应的配置，使得webpack的功能非常的强大。<br>常用的plugins：<br>CommonsChunkPlugin 提取多个入口文件的公共部分（区别于DllPlugin的提取），这样一来，页面首次该文件只需加载编译一次，缓存放在客户端，优化了页面加载速度。在webpack4版本中，该插件被splitChunksPlugin替换，实现了更好的优化功能<br>DllPlugin和DllReferencePlugin 将依赖的第三方库（比如angular,jquery等）独立打包成dll文件，因为这些库文件在开发中基本不会去改动，避免每次编译，将它独立出来，可以提高页面加载的速度<br>ExtractTextWebpackPlugin 将css文件从打包文件中独立出来<br>HotModuleReplacementPlugin  模块热替换，开发人员在web应用运行时，修改，增加或者删除部分源码模块内容之后，浏览器进行相应的内容更新但不需要重新加载页面。<br>HtmlWebpackPlugin 将打包后的文件通过script标签添加到html文件中<br>SourceMapDevToolPlugin  在控制台source栏源代码可视化，适用于开发环境<br>CopyWebpackPlugin  拷贝文件或文件夹到最终的打包文件夹<br>plugins的具体配置如下</p>
 <img src="http://webbucket-test.oss-cn-hangzhou.aliyuncs.com/plugin1.png?Expires=1538818279&OSSAccessKeyId=TMP.AQEx0xXLRbx9SGshZLmyl8Ri8qhaFs5GB67B64XAf_SwAHDcfxeajmKeRgOXADAtAhUA8unHDvrokQSw4qc_agaS00KPDFICFHw17M13_sad0tYMtZNX8PT3sEW6&Signature=kPvmfCF41bYevq6zjrq48StCQYU%3D">
 <img src="http://webbucket-test.oss-cn-hangzhou.aliyuncs.com/plugin2.png?Expires=1538818308&OSSAccessKeyId=TMP.AQEx0xXLRbx9SGshZLmyl8Ri8qhaFs5GB67B64XAf_SwAHDcfxeajmKeRgOXADAtAhUA8unHDvrokQSw4qc_agaS00KPDFICFHw17M13_sad0tYMtZNX8PT3sEW6&Signature=z7chYWBFdUGqZCu5%2FoNbYUalBvc%3D">
 <p>更多loader详情可以参考<a href="https://webpack.js.org/plugins/" target="_blank" rel="noopener"></a></p>
@@ -152,9 +152,17 @@
 <img src="http://webbucket-test.oss-cn-hangzhou.aliyuncs.com/mode.png?Expires=1538817278&OSSAccessKeyId=TMP.AQEx0xXLRbx9SGshZLmyl8Ri8qhaFs5GB67B64XAf_SwAHDcfxeajmKeRgOXADAtAhUA8unHDvrokQSw4qc_agaS00KPDFICFHw17M13_sad0tYMtZNX8PT3sEW6&Signature=ktmH3w%2BwqKxHAv3EAKqYuTf7FHg%3D">
 <img src="http://webbucket-test.oss-cn-hangzhou.aliyuncs.com/mode1.png?Expires=1538817677&OSSAccessKeyId=TMP.AQEx0xXLRbx9SGshZLmyl8Ri8qhaFs5GB67B64XAf_SwAHDcfxeajmKeRgOXADAtAhUA8unHDvrokQSw4qc_agaS00KPDFICFHw17M13_sad0tYMtZNX8PT3sEW6&Signature=Vf1z0SgYFI%2F8pvVhPtuBUYzuWr0%3D">
 </li>
-</ol>
-<ol start="6">
-<li>why webpack?<br>说了这么多配置，那么，webpack到底好在哪儿呢？ 除了webpack，还有很多其他的打包工具，比如grunt，gulp等，为什么webpack更受欢迎呢？<br>我们知道js的引用有两种：一种就是在html文档中以script标签一个个地引用js脚本；一种就是将所有js脚本合并为一个js文件，在html文档中以script标签引用。前者的问题是导致网络请求太多，后者问题是一个js文件太大，代码不好维护。<br>前期，我们通过IIFE’s(立即执行函数表达式)这种模块化的场景来解决上述的问题，因此grunt, gulp等工具诞生了，但它们只是简单地将所有模块串起来。当你改动了一部分的js代码，或者应用只需要部分文件时，这些工具依然需要重新对所有文件进行打包，也就是说效率非常地下。<br>而ECMAScrip6中倡导的模块化开发中，webpack非常好地避开了这些问题，提高了打包的效率。</li>
+<li><p>resolve<br>resolve可以设置webpack如何寻找模块文件，比如通过更改别名来加载绝对路径的模块；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">module.exports = &#123;</span><br><span class="line">  //...</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    alias: &#123;</span><br><span class="line">      Utilities: path.resolve(__dirname, &apos;src/utilities/&apos;), //import util from(&apos;Utilities/util&apos;)代替import util from(&apos;../../Utilities/util&apos;)</span><br><span class="line">      Templates: path.resolve(__dirname, &apos;src/templates/&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>devServer<br>通过使用 webpack-dev-server,提供一个简单的服务器功能，npm run start启动后就会自动打开浏览器，并且修改保存源码后，服务器会重新编译，重新加载，简化了在开发调试操作上的繁琐。支持HotModuleReplacementPlugin热加载，相互合作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">devServer: &#123;</span><br><span class="line">  contentBase: &apos;./dist&apos;   //表示服务器的文件来源dist</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>devtool<br>该选项主要是通过使用SourceMapDevTooPlugin插件，可以在调试阶段，通过浏览器的控制台具体定位代码编译错误的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">devtool: &apos;inline-source-map&apos;    </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>why webpack?<br>说了这么多配置，那么，webpack到底好在哪儿呢？ 除了webpack，还有很多其他的打包工具，比如grunt，gulp等，为什么webpack更受欢迎呢？<br>我们知道js的引用有两种：一种就是在html文档中以script标签一个个地引用js脚本；一种就是将所有js脚本合并为一个js文件，在html文档中以script标签引用。前者的问题是导致网络请求太多，后者问题是一个js文件太大，代码不好维护。<br>前期，我们通过IIFE’s(立即执行函数表达式)这种模块化的场景来解决上述的问题，因此grunt, gulp等工具诞生了，但它们只是简单地将所有模块串起来。当你改动了一部分的js代码，或者应用只需要部分文件时，这些工具依然需要重新对所有文件进行打包，也就是说效率非常低下。<br>而ECMAScrip6中倡导的模块化开发中，webpack非常好地避开了这些问题，提高了打包的效率。</p>
+</li>
 </ol>
 
         
