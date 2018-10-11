@@ -114,7 +114,7 @@
 
     <div class="post-list-item article">
       <h3 class="article-header">
-        <a href="/jintian-blog/2018/08/09/docker相关知识/" >
+        <a href="/jintian-blog/2018/08/09/docker之初体验/" >
   docker相关知识
 </a>
 
@@ -122,7 +122,7 @@
       
 
       <div class="article-info">
-        <a href="/jintian-blog/2018/08/09/docker相关知识/"><span class="article-date">
+        <a href="/jintian-blog/2018/08/09/docker之初体验/"><span class="article-date">
   2018-08-09
 </span>
 </a>
@@ -135,28 +135,34 @@
         
           <ol>
 <li><p>什么是docker？<br>NodeJs解释：将应用程序及其依赖以一种标准的单位进行打包。换言之，docker是一个快速部署的轻量级虚拟技术项目，开发人员可以一起打包程序和运行环境，成为一个镜像，只需要下载镜像文件就可以将程序跑起来，免去每次都安装各种依赖和环境的麻烦，还能够做到应用程序之间的隔离。粗糙地认为docker类似于虚拟机，但不同于虚拟机。两者的共同点：隔离和配置计算机资源；不同点，docker是在操作系统层面的虚拟化，而虚拟机是在硬件层面的虚拟化,下列图片很好地展示了两者区别</p>
-<img src="https://webbucket-test.oss-cn-hangzhou.aliyuncs.com/docker/docker.png">
-<img src="https://webbucket-test.oss-cn-hangzhou.aliyuncs.com/docker/%E8%99%9A%E6%8B%9F%E6%9C%BA.png">
+<img src="https://webbucket-test.oss-cn-hangzhou.aliyuncs.com/docker/docker.png" title="width=300px height=300px">
+<img src="https://webbucket-test.oss-cn-hangzhou.aliyuncs.com/docker/%E8%99%9A%E6%8B%9F%E6%9C%BA.png" title="width=300px height=300px">
 <p>docker特点：1. 安全 2. 轻量 3. 标准化</p>
 </li>
-<li><p>涉及的概念：镜像，容器，registry</p>
+<li><p>docker涉及的主要概念：docker images，docker container，docker registry<br>docker images是文件系统和参数的组合，docker里面所有文件都是基于镜像文件存在的，它是一种轻量，独立可执行的软件，内部包含了该应用程序运行所需的一切文件（如code, runtime, system tools, system libraries and settings），后续我们举例nginx镜像文件进行详细说明。<br>docker container是将所有程序及其依赖打包后的一种标准的单元，应用程序通过此容器，可以在不同的环境之间保持快速可靠运行<br>docker registry是一种无状态，高容量的服务器端应用，用来存储和分配docker images文件</p>
 </li>
-<li><p>必备知识：linux命令行，bash</p>
+<li><p>安装和配置： 官网（<a href="http://www.docker.com/）下载对应的docker，并按照指示进行安装。为了加速连接，提高docker的下载速度，可以添加加速器（可采用阿里云或者网易云的docker加速器），具体操作如下图" target="_blank" rel="noopener">http://www.docker.com/）下载对应的docker，并按照指示进行安装。为了加速连接，提高docker的下载速度，可以添加加速器（可采用阿里云或者网易云的docker加速器），具体操作如下图</a></p>
+<img src="https://webbucket-test.oss-cn-hangzhou.aliyuncs.com/docker/docker2.png?Expires=1539243627&OSSAccessKeyId=TMP.AQETJL8Gl9YSo6e5t8OtillDeSN_R1MhDIKsHA95ruqLsih51rtlkNI_pfI2MC4CFQC5nFPYwZW7y3L_vo_XA-TMVtiopwIVAPjIdquqlhjTd7pEeCb7wZPCkq6Z&Signature=mxVGfozALSQ52KCB3fFc9NLRNf0%3D" title="width=300px height=300px">
 </li>
-<li><p>安装和配置： 去官网（<a href="http://www.docker.com/）下载对应的docker软件（本人使用windows版本）。" target="_blank" rel="noopener">http://www.docker.com/）下载对应的docker软件（本人使用windows版本）。</a> 右键docker选择settings–》Docker Deamon–》            registry-mirrors   添加加速器连接 <a href="http://466ed505.m.daocloud.io/" target="_blank" rel="noopener">http://466ed505.m.daocloud.io/</a>  （来自于阿里云或者网易云的docker加速器，提高docker下载速度）</p>
+<li><p>安装好之后，就可以在命令行进行docker基本操作了，其指令和linux的操作类似，只是多了关键字docker,对于了解linux指令的开发人员来说，掌握基本指令其实是非常简单的事情。下列通过下载使用nginx进行详细说明</p>
+<ol>
+<li><p>查看容器的基本情况<br>1.1 docker images   //查看镜像列表<br>1.2 docker ps       //查看当前运行中的容器信息<br>1.3 docker ps -a    //查看所有容器信息，包括运行中和暂停的容器信息   </p>
 </li>
-<li><p>本地运行: 打开命令行窗口，进行docker相关操作（最好跟着下面的指令在自己的电脑上敲一遍，看一下效果）<br> 5.1 基本操作：查看，启动和停止容器，下载镜像文件<br> 5.1.1 docker images   //查看镜像列表<br> 5.1.2  docker ps   //查看当前运行中的容器信息<br> 5.1.3  docker ps -a   //查看所有容器信息，包括运行中和暂停的容器信息<br> 5.1.4  docker pull nginx   //下载nginx镜像文件<br> 5.1.5  docker run -itd -p 10090:80 –name “my-nginx” nginx   </p>
-<pre><code>//创建并启动nginx的新容器，并把虚拟机的80端口映射到本机的10090端口，在浏览器中可通过localhost:10090进行访问到nginx
-</code></pre><p> 5.1.6  docker stop #containerId    //停止指定的容器<br> 5.1.7  docker start  #containerId  //重启指定的容器，通过docker ps/docker ps -a 查看容器的</p>
-<p> 5.2    在运行的容器内执行bash命令<br> 5.2.1  docker exec -it  #containerId bash   //在运行的容器中执行bash命令<br> 5.2.2  cat /etc/nginx/conf.d/default.conf   //可以执行下述命令，如查看nginx镜像文件的配置文件<br> 5.2.3  apt-get update      //<br> 5.2.4  apt-get install vim   //安装vim<br> 5.2.5  vim /usr/share/nginx/html/index.html   打开步骤10看到的html文件，进行修改<br> 5.2.6  exit 退出</p>
-<p> 5.3    提交修改后生成的新的镜像文件<br> 5.3.1  docker ps  //查看<br> 5.3.2  docker diff<br> 5.3.3  docker commit -m “add: 修改了nginx首页的效果” containerId nginx2:1.0.1  //imageName自定义，tag也是 ,docker容器内的修改是暂存的，相当于        新的imgage,需要进行保存<br> 5.3.4  docker images   //查看镜像列表，新添加了一个镜像nginx2</p>
-<p> 5.4    删除容器操作<br> 5.4.1  dokcer stop containerId   //停止指定容器<br> 5.4.2  docker ps -a  //查看运行中的容器<br> 5.4.3  docker rm containerId  //删除容器<br> 5.4.4  删除镜像：docker rmi imageId  前提必须先停止该镜像所在容器，然后删除容器，再删除镜像，若镜像被多个容器引用，需要强制删除,指令后面再 –force</p>
-<p> 5.5    利用docker部署NodeJs应用，非常轻量和方便（还有问题，待补充）<br> 5.5.1  docker search node<br> 5.5.2  docker pull node    //下载node镜像文件<br> 5.5.3  用nodejs编写一个简单的hello world后端文件app.js，docker images查看到node是否下载成功<br> 5.5.4  docker run -itd -p 10092:82 –name “my-node” node   //为node镜像文件创建新的容器  //打开浏览器localhost:10092可以查看hello world效果<br> 5.5.5 docker cp app.js containerId:/home/hello     //将该文件拷贝到制定的容器内，并指定路径</p>
+<li><p>下载nginx镜像文件并创建容器<br>2.1 docker pull nginx   //下载nginx镜像文件<br>2.2 docker run -itd -p 10090:80 –name “my-nginx” nginx<br> //创建并启动nginx的新容器，并把虚拟机的80端口映射到本机的10090端口，在浏览器中可通过localhost:10090进行访问到nginx<br>2.3 docker stop #containerId    //停止指定的容器，通过docker ps -a 查看被停止的容器信息<br>2.4 docker start  #containerId  //重启指定的容器，通过docker ps/docker ps -a 查看容器的</p>
+<img src="https://webbucket-test.oss-cn-hangzhou.aliyuncs.com/docker/docker3.png">
 </li>
-<li><p>docker的应用场景</p>
+<li><p>在运行的容器内执行命令 ，语法： docker exec [OPTIONS] CONTAINER COMMAND [ARG…]<br>3.1  docker exec -it  #containerId bash   //在运行的容器中执行bash命令，成功进入后就可以使用bash命令进行相应操作<br>3.2  cat /etc/nginx/conf.d/default.conf   //如查看nginx镜像文件的配置文件<br>3.3  vim /usr/share/nginx/html/index.html   //比如编辑nginx下的html文件（apt-get update更新软件包，apt-get install vim安装vim）</p>
+</li>
+<li><p>由于docker容器内文件的修改是暂存的，需要进行提交保存。比如上述步骤3.3修改后的镜像文件进行提交保存<br>4.1  docker ps     //查看<br>4.2  docker diff #containerId  //文件的修改内容对比<br>4.3  docker commit -m “comment” #containerId nginx2:1.0.1<br>通过docker images查看镜像列表，新添加了一个镜像nginx2</p>
+<img src="https://webbucket-test.oss-cn-hangzhou.aliyuncs.com/docker/docker-images.png">
+</li>
+<li><p>操作完了，我们可以删除容器或删除镜像<br>5.1  dokcer stop containerId   //首先停止运行中的容器<br>5.2  docker rm #containerId    //删除容器<br>5.3  docker rmi #imageId  //删除容器内部的镜像文件<br>注意：如果没有执行前两步操作，直接删除镜像文件会失败，提示先停止该镜像所在容器，再删除镜像，若镜像被多个容器引用，需要强制删除,指令后面再加 –force</p>
 </li>
 </ol>
-<p>总结：使用docker的好处之一，就是方便学习新东西，用docker pull下载镜像文件，并在独立的容器内进行操作，用完后删掉容器和相应的文件，不影响本地。</p>
+</li>
+<li><p>总之，对于开发者来说，使用docker可以更方便地搭建和部署应用软件，在独立的容器内进行操作，用完后删掉容器和相应的镜像文件，不影响本地。后续文章将讨论如何利用dockerNodeJs应用,敬请期待。</p>
+</li>
+</ol>
 
         
       </div>
